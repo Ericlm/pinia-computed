@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useCounterStore } from '@/stores/counter'
+
 defineProps<{
   msg: string
 }>()
+
+const { doubleCount } = storeToRefs(useCounterStore())
 </script>
 
 <template>
@@ -12,6 +17,11 @@ defineProps<{
       <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
     </h3>
+
+    <div v-if="false">
+      doubleCount:
+      {{ doubleCount }}
+    </div>
   </div>
 </template>
 
@@ -33,6 +43,7 @@ h3 {
 }
 
 @media (min-width: 1024px) {
+
   .greetings h1,
   .greetings h3 {
     text-align: left;
